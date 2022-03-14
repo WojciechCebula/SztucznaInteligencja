@@ -1,8 +1,8 @@
 import random
 import typing
 
-import modes
-import grid
+import source.modes as modes
+import source.grid as grid
 
 
 class Mutator:

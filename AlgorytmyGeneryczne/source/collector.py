@@ -5,8 +5,9 @@ import pickle
 import os
 
 import multiprocessing
-import observation
-import environment
+
+import source.observation as observation
+import source.environment as environment
 
 
 class Pickled:
@@ -48,7 +49,7 @@ class Collector(observation.Observer):
              
     def _collect_and_save(self, subject: environment.Environment) -> None:
         if not subject.finished:
-            generation = [Pickled(list(specimen.grid), specimen.score) for specimen in subject.population.specimens]
+            generation = [(list(specimen.grid), specimen.score) for specimen in subject.population.specimens]
             self.queue.append(generation)
         
         if (self.index % self.save_interval == 0 or subject.finished) and self.queue:

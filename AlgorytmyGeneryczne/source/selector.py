@@ -1,7 +1,7 @@
 import typing
 import random
 
-import grid
+import source.grid as grid
 
 
 class Selector:

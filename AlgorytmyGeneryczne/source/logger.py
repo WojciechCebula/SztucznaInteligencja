@@ -1,7 +1,8 @@
-import population as pop
-import observation
-import environment
 import typing
+
+import source.observation as observation
+import source.environment as environment
+import source.population as pop
 
 
 class Logger(observation.Observer):

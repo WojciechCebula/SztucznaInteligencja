@@ -1,6 +1,6 @@
 import random
 
-import modes
+import source.modes as modes
 
 
 class Grid:

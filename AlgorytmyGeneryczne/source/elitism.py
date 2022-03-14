@@ -1,7 +1,7 @@
 import typing
 
-import population as pop
-import grid
+import source.population as pop
+import source.grid as grid
 
 
 class Elitism:

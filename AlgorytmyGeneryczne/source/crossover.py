@@ -1,7 +1,7 @@
 import random
 import typing
 
-import grid
+import source.grid as grid
 
 
 class Crossover:

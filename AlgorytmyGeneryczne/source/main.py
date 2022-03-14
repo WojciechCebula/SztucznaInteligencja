@@ -1,14 +1,15 @@
 import os.path as path
 
-import environment as env
-import crossover as cross
-import collector as col
-import elitism as elite
-import logger as log
-import mutation
-import selector
-import config
-import modes
+
+import source.mutation as mutation
+import source.selector as selector
+import source.environment as env
+import source.crossover as cross
+import source.collector as col
+import source.elitism as elite
+import source.config as config
+import source.logger as log
+import source.modes as modes
 
 
 easy = modes.Mode(
@@ -22,7 +23,7 @@ flat = modes.Mode(
     path.join(config.CONNECTIONS_DIRECTORY, "flat_cost.json")
 )
 hard = modes.Mode(
-    5, 6, 24, 
+    5, 6, 24,
     path.join(config.CONNECTIONS_DIRECTORY, "hard_flow.json"), 
     path.join(config.CONNECTIONS_DIRECTORY, "hard_cost.json")
 )

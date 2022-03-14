@@ -1,10 +1,10 @@
-import crossover as cross
-import population as pop
-import elitism as elite
-import selector as sel
-import observation
-import mutation
-import modes
+import source.observation as observation
+import source.mutation as mutation
+import source.crossover as cross
+import source.population as pop
+import source.elitism as elite
+import source.selector as sel
+import source.modes as modes
 
 
 class Environment(observation.Observable):

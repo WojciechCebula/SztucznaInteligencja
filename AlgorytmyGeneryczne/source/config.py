@@ -1,4 +1,4 @@
-import reusable
+import source.env as env
 
 CROSSING_PROBABILITY = 0.6
 MUTATION_PROBABILITY = 0.1
@@ -17,7 +17,7 @@ RESULTS_FOLDER = "results"
 PICKLED_DATA_FILENAME = "flat"
 SAVE_INTERVAL = 10
 
-reusable.load_env(__name__)
+env.load_env(__name__)
 
 import os.path as path
 
