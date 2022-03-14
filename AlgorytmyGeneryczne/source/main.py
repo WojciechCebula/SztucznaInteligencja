@@ -35,7 +35,7 @@ tournament_selector = selector.TournamentSelector(
 )
 
 mutator = mutation.BinaryBitFlipMutator(
-    hard,
+    easy,
     config.MUTATION_PROBABILITY
 )
 
@@ -47,7 +47,9 @@ elitism = elite.Elitism(
     config.ELITE_PROBABILITY
 )
 
-logger = log.Logger(
+simple_logger = log.SimpleLogger()
+
+verbose_logger = log.VerboseLogger(
     config.LOG_FREQUENCY,
     config.DISPLAYED_SPECIMENS
 )
@@ -59,12 +61,12 @@ collector = col.Collector(
 )
 
 environment = env.Environment(
-    hard,
-    tournament_selector,
+    easy,
+    roulette_selector,
     mutator,
     crossover,
     elitism,
-    logger,
+    simple_logger,
     collector
 )
 

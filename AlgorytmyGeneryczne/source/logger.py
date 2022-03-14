@@ -6,6 +6,15 @@ import source.population as pop
 
 
 class Logger(observation.Observer):
+    def update(self, subject) -> None:
+        if isinstance(subject, environment.Environment):
+            self._algorithm_logger(subject)
+             
+    def _algorithm_logger(self, subject: environment.Environment):
+        pass
+
+
+class VerboseLogger(Logger):
     _iteration_template = "Iteration: {current_iteration:3d}/{all_iterations:<3d} | Best scores: {best_specimens}"
     _best_specimen_template = "Best specimen - score: {score:5d} | genes: {genes}"
     
@@ -13,10 +22,6 @@ class Logger(observation.Observer):
         self.log_frequency = log_frequency
         self.number_of_specimens = number_of_specimens
         self.best_specimen_ever = None
-    
-    def update(self, subject) -> None:
-        if isinstance(subject, environment.Environment):
-            self._algorithm_logger(subject)
              
     def _algorithm_logger(self, subject: environment.Environment):
         best_specimens = self._get_best_specimens(subject.population)
@@ -54,3 +59,16 @@ class Logger(observation.Observer):
         scores = [(specimen.score, specimen.grid) for specimen in population]
         scores.sort(key=lambda s: s[0])
         return scores[:self.number_of_specimens]
+    
+
+class SimpleLogger(Logger):
+    _iteration_template = "Iteration: {current_iteration:3d}/{all_iterations:<3d}"
+          
+    def _algorithm_logger(self, subject: environment.Environment):
+        print(
+            self._iteration_template.format(
+                current_iteration=subject.current_iteration,
+                all_iterations=subject.iterations
+            ),
+            end="\r"
+        )

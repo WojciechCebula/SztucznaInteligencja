@@ -31,7 +31,7 @@ def get_population_statistics(population: typing.List[typing.Tuple[typing.List[i
 
 
 def add_annotation(ax, history, ymax, xmax):
-    xcoord = len(history)
+    xcoord = len(history) - 1
     ycoord = history[-1]
     xtextcoord = xcoord - xmax // 5
     ytextcoord = ycoord + ymax // 15
@@ -39,5 +39,5 @@ def add_annotation(ax, history, ymax, xmax):
     ax.annotate(
         ycoord, xy=(xcoord, ycoord), xycoords='data',
         xytext=(xtextcoord, ytextcoord), textcoords='data',
-        arrowprops=dict(arrowstyle="->",connectionstyle="angle,angleA=0,angleB=120")
+        arrowprops=dict(arrowstyle="->",connectionstyle="angle,angleA=0,angleB=135")
     )
