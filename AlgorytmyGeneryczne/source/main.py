@@ -35,7 +35,7 @@ tournament_selector = selector.TournamentSelector(
 )
 
 mutator = mutation.BinaryBitFlipMutator(
-    easy,
+    hard,
     config.MUTATION_PROBABILITY
 )
 
@@ -61,7 +61,7 @@ collector = col.Collector(
 )
 
 environment = env.Environment(
-    easy,
+    flat,
     roulette_selector,
     mutator,
     crossover,
@@ -72,4 +72,4 @@ environment = env.Environment(
 
 environment.init(config.POPULATION_SIZE)
 
-environment.run(config.ITERATIONS)
+environment.run(config.ITERATIONS, True)

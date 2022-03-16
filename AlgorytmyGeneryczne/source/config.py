@@ -14,7 +14,7 @@ LOG_FREQUENCY = 5
 DATA_DIRECTORY = ".data"
 CONNECTIONS_FOLDER = "connections"
 RESULTS_FOLDER = "results"
-PICKLED_DATA_FILENAME = "easy"
+PICKLED_DATA_FILENAME = "flat"
 SAVE_INTERVAL = 10
 
 env.load_env(__name__)

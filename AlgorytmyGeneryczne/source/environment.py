@@ -44,7 +44,7 @@ class Environment(observation.Observable):
         self.finished = False
         self.population.create_initial_population(size)
         
-    def run(self, iterations: int) -> None:
+    def run(self, iterations: int, random_method: bool = False) -> None:
         if not self.initialized:
             raise ValueError("Initialize object with 'init' function.")
         self.iterations = iterations
@@ -54,7 +54,11 @@ class Environment(observation.Observable):
         for iteration in range(self.iterations):
             self.current_iteration = iteration + 1
             try:
-                self._iterate()
+                if random_method:
+                    self._iterate_random()
+                else:
+                    self._iterate()
+                
                 self._notify()
             except KeyboardInterrupt:
                 break
@@ -75,3 +79,8 @@ class Environment(observation.Observable):
         self.population.calculate_scores()
         
         self.elitism.marge_elite(self.population)
+        
+    def _iterate_random(self) -> None:
+        for specimen in self.population:
+            specimen._randomize_grid()
+            specimen.calculate_score()
